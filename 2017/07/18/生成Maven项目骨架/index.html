@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="linux," />
+  <meta name="keywords" content="maven,archetype," />
 
 
 
@@ -93,17 +93,17 @@
 
 
 
-<meta name="description" content="1.^M是window的回车+换行2.替换方法在vi 中将其替换为\r1:%s/[ctrl+v, ctrl+m]/\r/g">
-<meta name="keywords" content="linux">
+<meta name="description" content="最近又要写新项目，然而已经厌倦了每次copy改的流程，决定生成个maven的archetype，方便以后使用。。。过程记录如下:">
+<meta name="keywords" content="maven,archetype">
 <meta property="og:type" content="article">
-<meta property="og:title" content="windows换行符转换">
-<meta property="og:url" content="http://zjkcmf.github.io/2017/07/17/windows换行符转换/index.html">
+<meta property="og:title" content="生成Maven项目骨架">
+<meta property="og:url" content="http://zjkcmf.github.io/2017/07/18/生成Maven项目骨架/index.html">
 <meta property="og:site_name" content="asdf&#39;s blog">
-<meta property="og:description" content="1.^M是window的回车+换行2.替换方法在vi 中将其替换为\r1:%s/[ctrl+v, ctrl+m]/\r/g">
-<meta property="og:updated_time" content="2017-07-17T02:25:02.000Z">
+<meta property="og:description" content="最近又要写新项目，然而已经厌倦了每次copy改的流程，决定生成个maven的archetype，方便以后使用。。。过程记录如下:">
+<meta property="og:updated_time" content="2017-07-18T06:15:50.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="windows换行符转换">
-<meta name="twitter:description" content="1.^M是window的回车+换行2.替换方法在vi 中将其替换为\r1:%s/[ctrl+v, ctrl+m]/\r/g">
+<meta name="twitter:title" content="生成Maven项目骨架">
+<meta name="twitter:description" content="最近又要写新项目，然而已经厌倦了每次copy改的流程，决定生成个maven的archetype，方便以后使用。。。过程记录如下:">
 
 
 
@@ -131,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://zjkcmf.github.io/2017/07/17/windows换行符转换/"/>
+  <link rel="canonical" href="http://zjkcmf.github.io/2017/07/18/生成Maven项目骨架/"/>
 
 
 
 
 
-  <title>windows换行符转换 | asdf's blog</title>
+  <title>生成Maven项目骨架 | asdf's blog</title>
   
 
 
@@ -265,7 +265,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://zjkcmf.github.io/2017/07/17/windows换行符转换/">
+    <link itemprop="mainEntityOfPage" href="http://zjkcmf.github.io/2017/07/18/生成Maven项目骨架/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="asdf">
@@ -282,7 +282,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">windows换行符转换</h1>
+          <h1 class="post-title" itemprop="name headline">生成Maven项目骨架</h1>
         
 
         <div class="post-meta">
@@ -294,8 +294,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-17T10:25:02+08:00">
-                2017-07-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-18T14:15:50+08:00">
+                2017-07-18
               </time>
             
 
@@ -329,7 +329,20 @@
       
 
       
-        <h2 id="1-M是window的回车-换行"><a href="#1-M是window的回车-换行" class="headerlink" title="1.^M是window的回车+换行"></a>1.^M是window的回车+换行</h2><h2 id="2-替换方法"><a href="#2-替换方法" class="headerlink" title="2.替换方法"></a>2.替换方法</h2><p>在vi 中将其替换为\r<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:%s/[ctrl+v, ctrl+m]/\r/g</div></pre></td></tr></table></figure></p>
+        <p>最近又要写新项目，然而已经厌倦了每次copy改的流程，决定生成个maven的archetype，方便以后使用。。。<br>过程记录如下:<br><a id="more"></a></p>
+<h3 id="为项目增加archetype插件"><a href="#为项目增加archetype插件" class="headerlink" title="为项目增加archetype插件"></a>为项目增加archetype插件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;plugin&gt;</div><div class="line">    &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;</div><div class="line">    &lt;artifactId&gt;maven-archetype-plugin&lt;/artifactId&gt;</div><div class="line">    &lt;version&gt;2.2&lt;/version&gt;</div><div class="line">&lt;/plugin&gt;</div></pre></td></tr></table></figure>
+<h3 id="生成archetype"><a href="#生成archetype" class="headerlink" title="生成archetype"></a>生成archetype</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mvn archetype:create-from-project</div></pre></td></tr></table></figure>
+<p>执行上面的命令后，会在<code>target/generated-sources</code>目录下生成一个名为<code>archetype</code>的目录</p>
+<h3 id="定制archetype"><a href="#定制archetype" class="headerlink" title="定制archetype"></a>定制archetype</h3><p>生成的archetype项目结构如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">.</div><div class="line">├── pom.xml</div><div class="line">├── src</div><div class="line">│   ├── main</div><div class="line">│   │   └── resources</div><div class="line">│   │       ├── META-INF</div><div class="line">│   │       │   └── maven</div><div class="line">│   │       │       └── archetype-metadata.xml</div><div class="line">│   │       └── archetype-resources</div><div class="line">│   │           ├── pom.xml</div><div class="line">│   │           └── src</div><div class="line">│   │               └── main</div><div class="line">│   │                   ├── java</div><div class="line">│   │                   └── resources</div><div class="line">│   └── test</div><div class="line">│       └── resources</div><div class="line">│           └── projects</div><div class="line">│               └── basic</div><div class="line">│                   ├── archetype.properties</div><div class="line">│                   └── goal.txt</div><div class="line">└── target</div></pre></td></tr></table></figure></p>
+<ul>
+<li><code>archetype-metadata.xml</code>这个文件会描述哪些文件是要保留到将来生成的项目中的</li>
+<li><code>archetype-resources</code>这个目录会包含将来生成项目的代码模板</li>
+</ul>
+<h3 id="用archetype生成项目"><a href="#用archetype生成项目" class="headerlink" title="用archetype生成项目"></a>用archetype生成项目</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mvn archetype:generate</div></pre></td></tr></table></figure>
+<p>执行上面的命令会列出所有archetype。<br>但是这样，maven会从线上抓一些数据，比较慢。<br>如果只希望用local的，可以先执行下面的命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mvn archetype:crawl</div></pre></td></tr></table></figure></p>
+<p>会生成文件<code>~/.m2/repository/archetype-catalog.xml</code><br>然后再执行<code>generate</code>的时候加上个参数就可以啦<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mvn archetype:generate -DarchetypeCatalog=local</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">[INFO] Scanning for projects...</div><div class="line">[INFO]</div><div class="line">[INFO] ------------------------------------------------------------------------</div><div class="line">[INFO] Building Maven Stub Project (No POM) 1</div><div class="line">[INFO] ------------------------------------------------------------------------</div><div class="line">[INFO]</div><div class="line">[INFO] &gt;&gt;&gt; maven-archetype-plugin:3.0.1:generate (default-cli) &gt; generate-sources @ standalone-pom &gt;&gt;&gt;</div><div class="line">[INFO]</div><div class="line">[INFO] &lt;&lt;&lt; maven-archetype-plugin:3.0.1:generate (default-cli) &lt; generate-sources @ standalone-pom &lt;&lt;&lt;</div><div class="line">[INFO]</div><div class="line">[INFO] --- maven-archetype-plugin:3.0.1:generate (default-cli) @ standalone-pom ---</div><div class="line">[INFO] Generating project in Interactive mode</div><div class="line">[INFO] No archetype defined. Using maven-archetype-quickstart (org.apache.maven.archetypes:maven-archetype-quickstart:1.0)</div><div class="line">Choose archetype:</div><div class="line">1: local -&gt; am.ik.archetype:spring-boot-blank-archetype (projectName)</div><div class="line">2: local -&gt; com.xxx:spring-boot-archetype (spring-boot-quickstart)</div><div class="line">3: local -&gt; org.apache.maven.archetypes:maven-archetype-profiles (profiles)</div><div class="line">Choose a number or apply filter (format: [groupId:]artifactId, case sensitive contains): :</div></pre></td></tr></table></figure>
+<p>第2个项目是我自己生成的</p>
 
       
     </div>
@@ -380,7 +393,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/linux/" rel="tag"># linux</a>
+            <a href="/tags/maven-archetype/" rel="tag"># maven,archetype</a>
           
         </div>
       
@@ -393,8 +406,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/16/test2/" rel="next" title="test2">
-                <i class="fa fa-chevron-left"></i> test2
+              <a href="/2017/07/17/windows换行符转换/" rel="next" title="windows换行符转换">
+                <i class="fa fa-chevron-left"></i> windows换行符转换
               </a>
             
           </div>
@@ -402,10 +415,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/07/18/生成Maven项目骨架/" rel="prev" title="生成Maven项目骨架">
-                生成Maven项目骨架 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -560,7 +569,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-M是window的回车-换行"><span class="nav-number">1.</span> <span class="nav-text">1.^M是window的回车+换行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-替换方法"><span class="nav-number">2.</span> <span class="nav-text">2.替换方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#为项目增加archetype插件"><span class="nav-number">1.</span> <span class="nav-text">为项目增加archetype插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成archetype"><span class="nav-number">2.</span> <span class="nav-text">生成archetype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定制archetype"><span class="nav-number">3.</span> <span class="nav-text">定制archetype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用archetype生成项目"><span class="nav-number">4.</span> <span class="nav-text">用archetype生成项目</span></a></li></ol></div>
             
 
           </div>
