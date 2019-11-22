@@ -262,7 +262,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://zjkcmf.github.io/2019/11/15/AQS/">
+    <link itemprop="mainEntityOfPage" href="http://zjkcmf.github.io/2019/11/22/SSL/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="asdf">
@@ -281,7 +281,292 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/11/15/AQS/" itemprop="url">AQS源码理解</a></h1>
+                <a class="post-title-link" href="/2019/11/22/SSL/" itemprop="url">SSL</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-22T09:57:01+08:00">
+                2019-11-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://zjkcmf.github.io/2019/11/20/TCP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="asdf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="asdf's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/20/TCP/" itemprop="url">TCP知识点备忘</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-20T11:25:45+08:00">
+                2019-11-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="0-TCP的特点"><a href="#0-TCP的特点" class="headerlink" title="0.TCP的特点"></a>0.TCP的特点</h2><ul>
+<li>可靠连接</li>
+<li>字节流服务</li>
+</ul>
+<h2 id="1-建立连接的过程"><a href="#1-建立连接的过程" class="headerlink" title="1.建立连接的过程"></a>1.建立连接的过程</h2><ul>
+<li>A -&gt; B (syn, seq=0, ack=0, A:sync_sent, B:)</li>
+<li>B -&gt; A (syn, seq=0, ack=1, A:esdablish, B:)</li>
+<li>A -&gt; B (seq=1, ack=1, A:, B:esdablish)</li>
+</ul>
+<h2 id="2-断开连接的过程"><a href="#2-断开连接的过程" class="headerlink" title="2.断开连接的过程"></a>2.断开连接的过程</h2><ul>
+<li>A -&gt; B (fin, A:fin_wait1)</li>
+<li>B -&gt; A (ack, A:fin_wait2)</li>
+<li>B -&gt; A (fin, A:time_wait)</li>
+<li>A -&gt; B (ack, A:close)</li>
+</ul>
+<h2 id="3-为什么需要3次握手和4次挥手？"><a href="#3-为什么需要3次握手和4次挥手？" class="headerlink" title="3.为什么需要3次握手和4次挥手？"></a>3.为什么需要3次握手和4次挥手？</h2><ul>
+<li>3次握手保证了客户端、服务器双方都确认收到了对方的ack，且次数最小</li>
+<li>4次挥手是因为TCP为全双工，前两次fin和ack关闭了一个方向的连接，另一个方向不影响</li>
+</ul>
+<h2 id="4-协议头详解"><a href="#4-协议头详解" class="headerlink" title="4.协议头详解"></a>4.协议头详解</h2><ul>
+<li>协议头最多60个字节</li>
+<li>除选项外20个字节</li>
+<li>一个包可以不携带数据</li>
+<li>包含源端口和目标端口</li>
+<li>包含标志位，如syn, fin, ack等等</li>
+<li>包含seq序列号和确认序列号，如果某一端连续发送多个包，ack是一样的</li>
+<li>序列号为已经发送的包大小加一</li>
+<li>确认序列号为已经接受的包大小加一</li>
+<li>包含紧急指针</li>
+</ul>
+<h2 id="5-wireshark抓包分析"><a href="#5-wireshark抓包分析" class="headerlink" title="5.wireshark抓包分析"></a>5.wireshark抓包分析</h2><p>如下展示的是本机的postman向jenkins服务器发起的http请求过程</p>
+<ul>
+<li>1.客户端发起syn，图中从ff开始到00结束的为TCP的头部，共20个字节（2个16进制为一个字节）<img src="/2019/11/20/TCP/connect-1.png" alt="建立连接-客户端发起syn" title="建立连接-客户端发起syn"></li>
+<li>2.服务器响应syn|ack，ack为1<img src="/2019/11/20/TCP/connect-2.png" alt="建立连接-服务端回应syn+ack" title="建立连接-服务端回应syn+ack"></li>
+<li>3.客户端响应ack<img src="/2019/11/20/TCP/connect-3.png" alt="建立连接-客户端回应ack" title="建立连接-客户端回应ack"></li>
+<li>4.客户端发送HTTP请求<img src="/2019/11/20/TCP/data-1.png" alt="数据交互-客户端发起http请求" title="数据交互-客户端发起http请求">
+<img src="/2019/11/20/TCP/data-2.png" alt="数据交互-http协议内容" title="数据交互-http协议内容"></li>
+<li>5.服务端ack=282，为4的客户端包序号加上payload大小<img src="/2019/11/20/TCP/data-3.png" alt="数据交互-服务端ack" title="数据交互-服务端ack"></li>
+<li>6.服务端向客户端发送数据，包含从210开始到215的共6个数据包。因为包太大，做了拆分<img src="/2019/11/20/TCP/data-4.png" alt="数据交互-发送数据" title="数据交互-发送数据">
+<img src="/2019/11/20/TCP/data-5.png" alt="数据交互-发送数据后组装" title="数据交互-发送数据后组装"></li>
+<li>7.客户端向服务端发送ack，其中第一个ack包含了前两个数据包的回应<img src="/2019/11/20/TCP/data-6.png" alt="数据交互-回应ack" title="数据交互-回应ack"></li>
+<li>8.客户端因收了大量数据，占用缓存区，调整窗口大小<img src="/2019/11/20/TCP/data-7.png" alt="数据交互-调整窗口大小" title="数据交互-调整窗口大小"></li>
+<li>9.客户端发送keepalive包给服务端（TODO: 找到原因）,keepalive包的标志位为ack，seq为上一个seq-1，ack为上一个ack<img src="/2019/11/20/TCP/data-8.png" alt="数据交互-keepalive" title="数据交互-keepalive"></li>
+<li>10.服务端发起fin<img src="/2019/11/20/TCP/finish-1.png" alt="断开连接-服务端发起" title="断开连接-服务端发起"></li>
+<li>11.客户端ack<img src="/2019/11/20/TCP/finish-2.png" alt="断开连接-客户端ack" title="断开连接-客户端ack"></li>
+<li>12.客户端发起fin，并回复ack<img src="/2019/11/20/TCP/finish-3.png" alt="断开连接-客户端fin,ack" title="断开连接-客户端fin,ack"></li>
+<li>13.服务端ack,结束断开<img src="/2019/11/20/TCP/finish-4.png" alt="断开连接-服务端ack" title="断开连接-服务端ack">
+</li>
+</ul>
+<h2 id="6-keepalive"><a href="#6-keepalive" class="headerlink" title="6.keepalive"></a>6.keepalive</h2><ul>
+<li>目的是为了在复杂的网络环境下保证tcp连接的存活</li>
+<li>一般发送心跳包的空闲时间间隔为7200秒，也就是两小时</li>
+<li>心跳包的seq和ack为上一次的值</li>
+</ul>
+<h2 id="7-流控机制"><a href="#7-流控机制" class="headerlink" title="7.流控机制"></a>7.流控机制</h2><ul>
+<li>连接建立后，对方会发来窗口调整包，指明窗口大小</li>
+<li>窗口大小代表了对方能一次接受多少包才给ack</li>
+</ul>
+<h2 id="8-Nagle算法和延迟ack"><a href="#8-Nagle算法和延迟ack" class="headerlink" title="8.Nagle算法和延迟ack"></a>8.Nagle算法和延迟ack</h2><ul>
+<li>Nagle算法可以理解为：只有收到对方的ack，才能发送数据，在等待ack过程中要发送的数据包都攒到一起发送</li>
+<li>延迟ack：为了避免ack包单独发送，会延迟一定时间，如果正好有需要发送的数据，就捎带一起发送过去</li>
+<li>两者结合，可能出现的问题：发送端由于没收到ack，一直等待，接受段等待ack延迟时间，不发送ack</li>
+</ul>
+<h2 id="9-超时重传机制"><a href="#9-超时重传机制" class="headerlink" title="9.超时重传机制"></a>9.超时重传机制</h2><h2 id="10-滑动窗口"><a href="#10-滑动窗口" class="headerlink" title="10.滑动窗口"></a>10.滑动窗口</h2>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://zjkcmf.github.io/2019/11/15/AQS-独占模式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="asdf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="asdf's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/15/AQS-独占模式/" itemprop="url">AQS-独占模式</a></h1>
         
 
         <div class="post-meta">
@@ -771,7 +1056,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -784,7 +1069,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
